@@ -19,6 +19,7 @@ import MapOutlinedIcon from "@mui/icons-material/MapOutlined";
 
 const Item = ({ title, to, icon, selected, setSelected }) => {
   const theme = useTheme();
+  
   const colors = tokens(theme.palette.mode);
   return (
     <MenuItem
@@ -80,7 +81,7 @@ const Sidebar = () => {
                 ml="15px"
               >
                 <Typography variant="h3" color={colors.grey[100]}>
-                  ADMINIS
+                  ZORVYN FINANCE 
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
                   <MenuOutlinedIcon />
@@ -89,6 +90,7 @@ const Sidebar = () => {
             )}
           </MenuItem>
 
+          {/* GENERIC USER SECTION */}
           {!isCollapsed && (
             <Box mb="25px">
               <Box display="flex" justifyContent="center" alignItems="center">
@@ -96,7 +98,8 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/user.png`}
+                  /* Use a high-quality UI Avatar with your company initials */
+                  src={`https://ui-avatars.com/api/?name=Zorvyn+User&background=6870fa&color=fff`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>
@@ -107,10 +110,10 @@ const Sidebar = () => {
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
-                  Ed Roh
+                  Guest User
                 </Typography>
                 <Typography variant="h5" color={colors.greenAccent[500]}>
-                  VP Fancy Admin
+                  Financial Manager
                 </Typography>
               </Box>
             </Box>
@@ -130,24 +133,24 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Data
+              Finance Management
             </Typography>
             <Item
-              title="Manage Team"
+              title="Overview"
               to="/team"
               icon={<PeopleOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Contacts Information"
+              title="Transaction"
               to="/contacts"
               icon={<ContactsOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
-              title="Invoices Balances"
+              title="Spending Analysis"
               to="/invoices"
               icon={<ReceiptOutlinedIcon />}
               selected={selected}
@@ -159,12 +162,12 @@ const Sidebar = () => {
               color={colors.grey[300]}
               sx={{ m: "15px 0 5px 20px" }}
             >
-              Pages
+              Account Actions
             </Typography>
             <Item
-              title="Profile Form"
+              title="Add Transaction"
               to="/form"
-              icon={<PersonOutlinedIcon />}
+              icon={<ReceiptOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}
             />

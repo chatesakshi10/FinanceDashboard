@@ -1,5 +1,5 @@
-import { Box, IconButton, useTheme } from "@mui/material";
-import { useContext } from "react";
+import { Box, IconButton, useTheme, Button } from "@mui/material"; // Added Button to imports
+import { useContext, useState } from "react";
 import { ColorModeContext, tokens } from "../../theme";
 import InputBase from "@mui/material/InputBase";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
@@ -13,6 +13,9 @@ const Topbar = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const colorMode = useContext(ColorModeContext);
+  
+  // 1. Only declare state ONCE
+  const [role, setRole] = useState("Admin"); 
 
   return (
     <Box display="flex" justifyContent="space-between" p={2}>
@@ -28,8 +31,22 @@ const Topbar = () => {
         </IconButton>
       </Box>
 
-      {/* ICONS */}
-      <Box display="flex">
+      {/* ICONS & ROLE SWITCHER */}
+      <Box display="flex" alignItems="center">
+        {/* 2. Moved the Button inside the return and styled it to match your theme */}
+        <Button 
+          sx={{ 
+            backgroundColor: colors.blueAccent[700], 
+            color: colors.grey[100],
+            fontWeight: "bold",
+            padding: "5px 15px",
+            marginRight: "15px"
+          }}
+          onClick={() => setRole(role === "Admin" ? "Viewer" : "Admin")}
+        >
+          {role} Mode
+        </Button>
+
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />

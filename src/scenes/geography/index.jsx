@@ -6,10 +6,13 @@ import { tokens } from "../../theme";
 const Geography = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
+  
   return (
     <Box m="20px">
-      <Header title="Geography" subtitle="Simple Geography Chart" />
-
+      <Header 
+        title="GLOBAL SPENDING MAP" 
+        subtitle="Distribution of international transaction volumes" 
+      />
       <Box
         height="75vh"
         border={`1px solid ${colors.grey[100]}`}

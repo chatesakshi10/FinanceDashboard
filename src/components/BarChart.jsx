@@ -11,36 +11,26 @@ const BarChart = ({ isDashboard = false }) => {
     <ResponsiveBar
       data={data}
       theme={{
-        // added
         axis: {
           domain: {
-            line: {
-              stroke: colors.grey[100],
-            },
+            line: { stroke: colors.grey[100] },
           },
           legend: {
-            text: {
-              fill: colors.grey[100],
-            },
+            text: { fill: colors.grey[100] },
           },
           ticks: {
-            line: {
-              stroke: colors.grey[100],
-              strokeWidth: 1,
-            },
-            text: {
-              fill: colors.grey[100],
-            },
+            line: { stroke: colors.grey[100], strokeWidth: 1 },
+            text: { fill: colors.grey[100] },
           },
         },
         legends: {
-          text: {
-            fill: colors.grey[100],
-          },
+          text: { fill: colors.grey[100] },
         },
       }}
-      keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-      indexBy="country"
+      /* CHANGE 1: Match keys from mockData.js */
+      keys={["Income", "Rent", "Tech", "Food", "Travel", "Other"]}
+      /* CHANGE 2: Match the index property (month) */
+      indexBy="month" 
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
@@ -76,7 +66,8 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "country", // changed
+        /* CHANGE 3: Update legend label */
+        legend: isDashboard ? undefined : "Monthly Period", 
         legendPosition: "middle",
         legendOffset: 32,
       }}
@@ -84,7 +75,8 @@ const BarChart = ({ isDashboard = false }) => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: isDashboard ? undefined : "food", // changed
+        /* CHANGE 4: Update legend label to Rupee */
+        legend: isDashboard ? undefined : "Amount (in ₹)", 
         legendPosition: "middle",
         legendOffset: -40,
       }}
@@ -121,7 +113,7 @@ const BarChart = ({ isDashboard = false }) => {
       ]}
       role="application"
       barAriaLabel={function (e) {
-        return e.id + ": " + e.formattedValue + " in country: " + e.indexValue;
+        return e.id + ": " + e.formattedValue + " in month: " + e.indexValue;
       }}
     />
   );
